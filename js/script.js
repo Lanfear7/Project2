@@ -17,14 +17,18 @@ For assistance:
 Create the `showPage` function
 This function will create and insert/append the elements needed to display a "page" of nine students
 */
+const page = 1;
+const itemsPerPage = 9;
+
 function showPage(list, page){
-   let startIndex = ;
-   let endIndex = ;
+   
+   let startIndex = itemsPerPage * page;
+   let endIndex = startIndex + itemsPerPage;
    let studentList = document.getElementsByClassName("student-list").value;
    studentList.innerHTML = '';
 
    for (let i = 0; i < list.length; i++){
-      if(i > startIndex && i < endIndex){
+      if(i >= startIndex && i < endIndex){
          const li = document.createElement('LI');
          const div = document.createElement('DIV');
          const img = document.createElement('IMG');
