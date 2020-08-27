@@ -21,7 +21,7 @@ const page = 1;
 const itemsPerPage = 9;
 const studentData = data;
 
-function showPage(pageNumber, studentsPerPage, studentData){
+function showPage(pageNumber, studentData){
 
    let startIndex = (page * itemsPerPage) - itemsPerPage;
    let endIndex = page * itemsPerPage;
@@ -33,6 +33,7 @@ function showPage(pageNumber, studentsPerPage, studentData){
    for (let i = 0; i < studentList.length; i++){
       if(i >= startIndex && i < endIndex){
          let studentProfile = '';
+         //format the student profile li
          studentProfile += `<li class="student-item cf">` +
             `<div class="avatar" src="${studentData.picture}">` +
             `<h3>${studentData.name}</h3>` +
@@ -42,13 +43,15 @@ function showPage(pageNumber, studentsPerPage, studentData){
                `<span class="date">${studentData.registered}</span>` +
             `</div>` +
             `</li>`
-            const h = document.getElementsByClassName("student-list");
-            h.insertAdjacentHTML(afterend, studentProfile);
+
+            //ive tried this with studentList as well 
+            const h = document.getElementsByClassName("student-list")[i];
+            h.insertAdjacentHTML("afterend", studentProfile);
       }
    }
    
 };
-showPage(page, itemsPerPage, studentData);
+showPage(page, studentData);
 
 
 
