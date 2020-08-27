@@ -2,7 +2,7 @@
 Treehouse Techdegree:
 FSJS Project 2 - Data Pagination and Filtering
 */
-
+console.log(data);
 
 
 /*
@@ -18,10 +18,10 @@ Create the `showPage` function
 This function will create and insert/append the elements needed to display a "page" of nine students
 */
 const page = 1;
-const itemsPerPage = 9;
+const itemsPerPage = 10;
 const studentData = data;
 
-function showPage(pageNumber, studentData){
+function showPage(list, page){
 
    let startIndex = (page * itemsPerPage) - itemsPerPage;
    let endIndex = page * itemsPerPage;
@@ -30,12 +30,12 @@ function showPage(pageNumber, studentData){
    studentList.innerHTML = '';
 
    //trying to append the data from data.js 
-   for (let i = 0; i < studentList.length; i++){
+   for (let i = 0; i < list.length; i++){
       if(i >= startIndex && i < endIndex){
          let studentProfile = '';
          //format the student profile li
          studentProfile += `<li class="student-item cf">` +
-            `<div class="avatar" src="${studentData.picture}">` +
+            `<div class="avatar" src="${list}}">` +
             `<h3>${studentData.name}</h3>` +
             `<span class="email">${studentData.email}</span>` +
             `</div>` +
@@ -45,13 +45,13 @@ function showPage(pageNumber, studentData){
             `</li>`
 
             //ive tried this with studentList as well 
-            const h = document.getElementsByClassName("student-list")[i];
-            h.insertAdjacentHTML("afterend", studentProfile);
+            const h = document.getElementsByClassName("student-list")[0];
+            h.insertAdjacentHTML("beforeend", studentProfile);
       }
    }
    
 };
-showPage(page, studentData);
+showPage(data, 2);
 
 
 
