@@ -19,29 +19,37 @@ This function will create and insert/append the elements needed to display a "pa
 */
 const page = 1;
 const itemsPerPage = 9;
+const studentData = data;
 
-function showPage(pageNumber, studentsPerPage){
+function showPage(pageNumber, studentsPerPage, studentData){
 
-   const list = document.getElementById('student-list');
-   
    let startIndex = (page * itemsPerPage) - itemsPerPage;
    let endIndex = page * itemsPerPage;
-   
-   let studentList = document.getElementsByClassName("student-list");
+
+   const studentList = document.getElementsByClassName("student-list");
    studentList.innerHTML = '';
 
-   let li = document.createElement('LI');
-   let div = document.createElement('DIV');
-   let img = document.createElement('IMG');
-   let h3 = document.createElement('H3');
-   let span= document.createElement('SPAN');
-
-   for (let i = 0; i < list.length; i++){
+   //trying to append the data from data.js 
+   for (let i = 0; i < studentList.length; i++){
       if(i >= startIndex && i < endIndex){
- 
+         let studentProfile = '';
+         studentProfile += `<li class="student-item cf">` +
+            `<div class="avatar" src="${studentData.picture}">` +
+            `<h3>${studentData.name}</h3>` +
+            `<span class="email">${studentData.email}</span>` +
+            `</div>` +
+            `<div class="joined-details">` +
+               `<span class="date">${studentData.registered}</span>` +
+            `</div>` +
+            `</li>`
+            const h = document.getElementsByClassName("student-list");
+            h.insertAdjacentHTML(afterend, studentProfile);
       }
    }
+   
 };
+showPage(page, itemsPerPage, studentData);
+
 
 
 
