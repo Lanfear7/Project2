@@ -58,8 +58,7 @@ This function will create and insert/append the elements needed for the paginati
 */
 function addPagination(list){
    let pageNumber = Math.ceil(list.length/ itemsPerPage);
-   const paginationHolder = document.getElementsByClassName("link-list");
-   paginationHolder.innerHTML = '';
+  
 
    for (let i = 1; i <= pageNumber; i++){
       let paginationButton = '';
@@ -81,8 +80,14 @@ function addPagination(list){
             //these 2 lines will remove the active class from the previous button
             let active = document.querySelector('.active');
             active.className = '';
-
+             
+            //set the button click to active 
             e.target.className = 'active';
+            
+            const paginationHolder = document.getElementsByClassName("link-list");
+            paginationHolder.innerHTML = '';
+            //new data
+            showPage(list, e.target.textContent)
 
          }
       });
