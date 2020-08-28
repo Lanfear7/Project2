@@ -17,7 +17,7 @@ Create the `showPage` function
 This function will create and insert/append the elements needed to display a "page" of nine students
 */
 const page = 1;
-const itemsPerPage = 10;
+const itemsPerPage = 9;
 const studentData = data;
 
 function showPage(list, page){
@@ -52,10 +52,6 @@ function showPage(list, page){
    
 };
 
-
-
-
-
 /*
 Create the `addPagination` function
 This function will create and insert/append the elements needed for the pagination buttons
@@ -68,22 +64,25 @@ function addPagination(list){
    for (let i = 1; i <= pageNumber; i++){
       let paginationButton = '';
       paginationButton += `<li>` +
-         `<button type="button"> 1 <button>` +
+         `<button type="button">${i}` +
          `</li>`
-      const j = document.getElementsByClassName("link-list");
-      j.insertAdjacentHTML("beforeend", paginationButton);
-      let fisrtButton = document.querySelector('button');
-      fisrtButton.className = "active";
+      
+      //insert the buttons
+      const h = document.getElementsByClassName("link-list")[0];
+      h.insertAdjacentHTML("beforeend", paginationButton);
+
+      //will set the fist button to active
+      let firstButton = document.querySelector('button');
+      firstButton.className = "active";
+
+      //once the link-list has a click event on it run this 
+      h.addEventListener('click', (e) => {
+         e.target.className = 'active';
+         e.target.className = '';
+      });
    }
 
-   paginationHolder.addEventListener('click', (e) =>{
-      if(e.target.tagName === "BUTTON"){
-         let firstButton = document.querySelector('button');
-         firstButton.className = '';
-         e.target.className = 'active';
-         showPage(data);
-      }
-   })
+   
 };
 
 
