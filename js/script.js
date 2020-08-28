@@ -77,8 +77,14 @@ function addPagination(list){
 
       //once the link-list has a click event on it run this 
       h.addEventListener('click', (e) => {
-         e.target.className = 'active';
-         e.target.className = '';
+         if (e.target.tagName === "BUTTON"){
+            //these 2 lines will remove the active class from the previous button
+            let active = document.querySelector('.active');
+            active.className = '';
+
+            e.target.className = 'active';
+
+         }
       });
    }
 
