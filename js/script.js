@@ -16,88 +16,45 @@ For assistance:
 Create the `showPage` function
 This function will create and insert/append the elements needed to display a "page" of nine students
 */
-const page = 1;
-const itemsPerPage = 9;
-const studentData = data;
 
 function showPage(list, page){
-
+   let itemsPerPage = 9;
    let startIndex = (page * itemsPerPage) - itemsPerPage;
    let endIndex = page * itemsPerPage;
 
-   const studentList = document.getElementsByClassName("student-list");
-   studentList.innerHTML = '';
+   let ul = document.querySelector('.student-list');
+   ul.innerHTML = '';
 
-   //trying to append the data from data.js 
-   for (let i = 0; i < list.length; i++){
-      if(i >= startIndex && i < endIndex){
+   //creat loop that will loop over each obj in the list 
+   for(var i = 0; i < list.length; i++) {
+      var obj = list[i];
+      if (i >= startIndex && i < endIndex){
          let studentProfile = '';
          //format the student profile li
          studentProfile += `<li class="student-item cf">` +
             `<div class="student-details">` +
-            `<img class="avatar" src="${data[i].picture.thumbnail}">` +
-            `<h3>${data[i].name.first} ${data[i].name.last}</h3>` +
-            `<span class="email">${data[i].email}</span>` +
+            `<img class="avatar" src="${obj.picture.thumbnail}">` +
+            `<h3>${obj.name.first} ${obj.name.last}</h3>` +
+            `<span class="email">${obj.email}</span>` +
             `</div>` +
             `<div class="joined-details">` +
-               `<span class="date">Joined: ${data[i].registered.date}</span>` +
+               `<span class="date">Joined: ${obj.registered.date}</span>` +
             `</div>` +
             `</li>`
 
-            //insert the students
-            const h = document.getElementsByClassName("student-list")[0];
-            h.insertAdjacentHTML("beforeend", studentProfile);
+             //insert the students
+             const h = document.getElementsByClassName("student-list")[0];
+             h.insertAdjacentHTML("beforeend", studentProfile)
       }
    }
-   
 };
+showPage(data, 3);
 
 /*
 Create the `addPagination` function
 This function will create and insert/append the elements needed for the pagination buttons
 */
-function addPagination(list){
-   let pageNumber = Math.ceil(list.length/ itemsPerPage);
-  
-
-   for (let i = 1; i <= pageNumber; i++){
-      let paginationButton = '';
-      paginationButton += `<li>` +
-         `<button type="button">${i}` +
-         `</li>`
-      
-      //insert the buttons
-      const h = document.getElementsByClassName("link-list")[0];
-      h.insertAdjacentHTML("beforeend", paginationButton);
-
-      //will set the fist button to active
-      let firstButton = document.querySelector('button');
-      firstButton.className = "active";
-
-      //once the link-list has a click event on it run this 
-      h.addEventListener('click', (e) => {
-         if (e.target.tagName === "BUTTON"){
-            //these 2 lines will remove the active class from the previous button
-            let active = document.querySelector('.active');
-            active.className = '';
-             
-            //set the button click to active 
-            e.target.className = 'active';
-            
-            const paginationHolder = document.getElementsByClassName("link-list");
-            paginationHolder.innerHTML = '';
-            //new data
-            showPage(list, e.target.textContent)
-
-         }
-      });
-   }
-
-   
-};
 
 
 
 // Call functions
-showPage(data, 1);
-addPagination(data)
