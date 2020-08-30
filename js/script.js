@@ -19,7 +19,7 @@ This function will create and insert/append the elements needed to display a "pa
 
 
 //global so both functions can use 
-let itemsPerPage = 9;
+let itemsPerPage = 10;
 
 
 
@@ -37,20 +37,20 @@ function showPage(list, page){
       if (i >= startIndex && i < endIndex){
          let studentProfile = '';
          //format the student profile li
-         studentProfile += `<li class="student-item cf">` +
-            `<div class="student-details">` +
-            `<img class="avatar" src="${obj.picture.thumbnail}">` +
-            `<h3>${obj.name.first} ${obj.name.last}</h3>` +
-            `<span class="email">${obj.email}</span>` +
-            `</div>` +
-            `<div class="joined-details">` +
-               `<span class="date">Joined: ${obj.registered.date}</span>` +
-            `</div>` +
-            `</li>`
+         studentProfile += `<li class="student-item cf"> 
+            <div class="student-details"> 
+            <img class="avatar" src="${obj.picture.thumbnail}"> 
+            <h3>${obj.name.first} ${obj.name.last}</h3> 
+            <span class="email">${obj.email}</span> 
+            </div> 
+            <div class="joined-details"> 
+              <span class="date">Joined: ${obj.registered.date}</span> 
+            </div> 
+            </li>`
 
              //insert the students
-             const h = document.getElementsByClassName("student-list")[0];
-             h.insertAdjacentHTML("beforeend", studentProfile)
+             const insertStudets = document.getElementsByClassName("student-list")[0];
+             insertStudets.insertAdjacentHTML('beforeend', studentProfile)
       }
    }
 };
@@ -70,12 +70,12 @@ function addPagination(list){
    //for loop to add pagination buttons
    for (let i =  1; i <= numOfPages; i++){
       let paginationButton = '';
-      paginationButton += `<li>` +
-      `<button type="button">${i}` +
-      `</li>`
+      paginationButton += `<li> 
+      <button type="button">${i} 
+      </li>`
       
       //insert into DOM
-      ul.insertAdjacentHTML("beforeend", paginationButton);
+      ul.insertAdjacentHTML('beforeend', paginationButton);
 
       let firstButton = document.querySelector('button');
       firstButton.className = "active";
