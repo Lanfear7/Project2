@@ -19,7 +19,7 @@ This function will create and insert/append the elements needed to display a "pa
 
 
 //global so both functions can use 
-let itemsPerPage = 10;
+let itemsPerPage = 9;
 
 
 
