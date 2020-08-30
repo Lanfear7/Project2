@@ -25,9 +25,11 @@ let itemsPerPage = 9;
 
 function showPage(list, page){
    
+   //get the start and end points
    let startIndex = (page * itemsPerPage) - itemsPerPage;
    let endIndex = page * itemsPerPage;
 
+   //select the student-list
    let ul = document.querySelector('.student-list');
    ul.innerHTML = '';
 
@@ -77,6 +79,7 @@ function addPagination(list){
       //insert into DOM
       ul.insertAdjacentHTML('beforeend', paginationButton);
 
+      //select the first button
       let firstButton = document.querySelector('button');
       firstButton.className = "active";
 
